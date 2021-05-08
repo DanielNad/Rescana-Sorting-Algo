@@ -23,7 +23,7 @@ const isSubDomain = (domain) => {
 
 const getPriority = (value) => {
   value = isSubDomain(value);
-  return value in config ? config[value].priority : -1;
+  return value in config ? config[value]?.priority : -1;
 };
 
 const sortByPriority = () => {
@@ -42,5 +42,5 @@ const sortByPriority = () => {
 console.log(data);
 
 const result = Promise.allSettled(sortByPriority()).then((value) =>
-  value.forEach((ip) => console.log(ip.value.address))
+  value?.forEach((ip) => console.log(ip?.value?.address))
 );
